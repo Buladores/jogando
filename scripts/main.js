@@ -29,11 +29,10 @@ const filterGames = (filterA, filterB) => {
         let hasFilterB = false;
 
         if (!filterA?.value) hasFilterA = true;
+        else if (game?.[filterA.key]?.toLowerCase()?.includes(filterA.value.toLowerCase())) hasFilterA = true;
         if (!filterB?.value) hasFilterB = true;
-
-        if (game?.[filterA.key]?.toLowerCase()?.includes(filterA.value.toLowerCase())) hasFilterA = true;
-        if (game?.[filterB.key]?.toLowerCase()?.includes(filterB.value.toLowerCase())) hasFilterB = true;
-
+        else if (game?.[filterB.key]?.toLowerCase()?.includes(filterB.value.toLowerCase())) hasFilterB = true;      
+        
         if (hasFilterA && hasFilterB) return true;
     })
 };
