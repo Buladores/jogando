@@ -14,17 +14,11 @@ const setIsLoading = isLoading => {
 
 // Generator function que carrega os cards
 function* loadGames_(games) {
-    let counter = 0;
     GAMES_DIV.innerHTML = "";
 
-    for (let game of games) {
-        append(GAMES_DIV, append('li', game.title));
-        counter++;
-
-        if (counter === 3) {
-            counter = 0;
-            yield;
-        }
+    for (let i = 0; i < games.length; i++) {
+        append(GAMES_DIV, append('li', games[i].title));
+        if (!(i % 9) && i) yield;
     }
 }
 
