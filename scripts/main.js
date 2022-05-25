@@ -4,6 +4,7 @@ import { addClass, append, removeClass } from './utils/domManipulator.js';
 
 
 let gamesList = [];
+let loadPopularGames;
 
 const setIsLoading = isLoading => {
     if (isLoading) addClass(GAMES_DIV, 'is-loading');
@@ -14,9 +15,7 @@ function* loadGames(games) {
     let counter = 0;
 
     for (let game of games) {
-        const LI = document.createElement('li');
-        append(LI, game.title);
-        append(GAMES_DIV, LI);
+        append(GAMES_DIV, append('li', game.title));
         counter++;
 
         if (counter === 3) {
@@ -25,8 +24,6 @@ function* loadGames(games) {
         }
     }
 }
-
-let loadPopularGames;
 
 (async () => {
     setIsLoading(true);
@@ -37,4 +34,3 @@ let loadPopularGames;
     loadPopularGames.next();
     window.loadPopularGames = loadPopularGames;
 })();
-

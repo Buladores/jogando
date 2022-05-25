@@ -8,5 +8,8 @@ export const removeClass = (domElement, className) => {
 
 export const append = (domElement, child) => {
     if (typeof child === 'string') child = document.createTextNode(child);
-    return domElement.appendChild(child);
+    if (typeof domElement === 'string') domElement = document.createElement(domElement);
+
+    domElement.appendChild(child);
+    return domElement;
 }
