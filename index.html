@@ -15,10 +15,16 @@
 </head>
 
 <body>
+    <button onclick="loadGames.next()">Load more</button>
+    <button onclick="changeParam('platform', 'browser')">Browser</button>
+    <button onclick="changeParam('platform', 'PC (Windows)')">PC</button>
+    <button onclick="changeParam('platform', '')">All</button>
+
+    <div id="buttons">
+    </div>
+
     <ul id="games">
     </ul>
-    
-    <button onclick="loadPopularGames.next()">Load more</button>
 </body>
 
 <script src="./scripts/main.js" type="module"></script>
