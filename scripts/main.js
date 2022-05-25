@@ -29,9 +29,9 @@ const filterGames = (filterA, filterB) => {
         let hasFilterB = false;
 
         if (!filterA?.value) hasFilterA = true;
-        else if (game[filterA.key].toLowerCase().includes(filterA.value.toLowerCase())) hasFilterA = true;
+        else if (game[filterA.key].toLowerCase().includes(filterA.value)) hasFilterA = true;
         if (!filterB?.value) hasFilterB = true;
-        else if (game[filterB.key].toLowerCase().includes(filterB.value.toLowerCase())) hasFilterB = true;      
+        else if (game[filterB.key].toLowerCase().includes(filterB.value)) hasFilterB = true;      
         
         if (hasFilterA && hasFilterB) return true;
     })
@@ -40,7 +40,7 @@ const filterGames = (filterA, filterB) => {
 // Essa função altera um parametro da URL e carrega os cards mediante os parâmetros
 const changeParam = (name, value) => {
     const params = new URLSearchParams(window.location.search);
-    params.set(name, value);
+    params.set(name, value.toLowerCase());
     window.history.replaceState({}, "", decodeURIComponent(`${window.location.pathname}?${params}`));
 
     const urlParams = new URLSearchParams(window.location.search);
