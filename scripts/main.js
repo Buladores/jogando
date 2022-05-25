@@ -6,11 +6,13 @@ import { addClass, append, removeClass } from './utils/domManipulator.js';
 let gamesList = [];
 let loadGames;
 
+// Lida com o estado de carregamento da página
 const setIsLoading = isLoading => {
     if (isLoading) addClass(GAMES_DIV, 'is-loading');
     else removeClass(GAMES_DIV, 'is-loading');
 }
 
+// Generator function que carrega os cards
 function* loadGames_(games) {
     let counter = 0;
     GAMES_DIV.innerHTML = "";
@@ -26,7 +28,7 @@ function* loadGames_(games) {
     }
 }
 
-// Os filtros são objetos com key e value
+// Função que filtra a gamesList. Os filtros são objetos com key e value
 const filterGames = (filterA, filterB) => {
     return gamesList.filter(game => {
         let hasFilterA = false;
@@ -42,6 +44,7 @@ const filterGames = (filterA, filterB) => {
     })
 };
 
+// Essa função altera um parametro da URL e carrega os cards mediante os parâmetros
 const changeParam = (name, value) => {
     const params = new URLSearchParams(window.location.search);
     params.set(name, value);
@@ -58,6 +61,7 @@ const changeParam = (name, value) => {
 }
 window.changeParam = changeParam;
 
+// Essa função serve para setar as configurações iniciais da página
 (async () => {
     setIsLoading(true);
     gamesList = await requests.fetchGamesList();
@@ -72,4 +76,4 @@ window.changeParam = changeParam;
         BUTTON.addEventListener('click', () => changeParam('genre', genre))
         append(document.getElementById('buttons'), BUTTON);
     })
-})();
+})()
