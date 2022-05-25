@@ -1,0 +1,12 @@
+body {
+  background-color: #231a1d;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+body h1 {
+  font-weight: 600;
+}
+body span {
+  font-weight: 300;
+}

@@ -1,0 +1,1 @@
+export const GAMES_DIV = document.getElementById('games');
