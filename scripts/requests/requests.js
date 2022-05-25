@@ -1,6 +1,6 @@
 import makeRequest from "../utils/requestHandler.js";
 
-export const getGamesList = async () => {
+export const fetchGamesList = async () => {
     const games = await makeRequest('games');
     return games;
 }

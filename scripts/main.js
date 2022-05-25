@@ -30,7 +30,7 @@ let loadPopularGames;
 
 (async () => {
     setIsLoading(true);
-    gamesList = await requests.getGamesList();
+    gamesList = await requests.fetchGamesList();
     setIsLoading(false);
 
     loadPopularGames = loadGames(gamesList);
