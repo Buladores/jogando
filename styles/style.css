@@ -302,13 +302,15 @@ body.dark .sidebar .bottom-content .toggle-switch .switch::before {
 #games li {
   display: block;
   position: relative;
-  cursor: pointer;
 }
 #games li .game-wrapper {
   margin: 10px 20px;
   border-radius: 5px;
   display: block;
+}
+#games li .game-wrapper a {
   text-decoration: none;
+  cursor: pointer;
 }
 #games li .game-wrapper img {
   width: 100%;
@@ -318,6 +320,14 @@ body.dark .sidebar .bottom-content .toggle-switch .switch::before {
 #games li .game-wrapper .description {
   display: none;
   font-size: 0.8rem;
+}
+#games li .game-wrapper .favorite-button {
+  background-color: red;
+  color: #fff;
+  cursor: pointer;
+}
+#games li .game-wrapper .favorite-button.active {
+  background-color: green;
 }
 
 @media screen and (min-width: 769px) {

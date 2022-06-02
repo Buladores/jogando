@@ -10,6 +10,21 @@ const gamesDiv = document.getElementById('games'),
     sidebarMenuOptions = document.querySelector('.sidebar .menu .menu-links'),
     searchInput = document.getElementById('search');
 
+const createGameCard = (game, isBanner) => {
+    return `
+        <div class="game-wrapper">
+            <a href="${game.game_url}" title="${game.title}">
+                <img class="thumbnail" src="${isBanner ? game.thumbnail.replace("thumbnail", "background") : game.thumbnail}" onerror='onImgError(this);' />
+            </a>
+            <a href="${game.game_url}" title="${game.title}">
+                <span class="game-title text">${game.title}</span>
+            </a>
+            <button class="favorite-button ${game.favorite ? 'active' : ''}" onclick="onFavoriteClick(${game.id})"><span class="bx bx-heart"></span></button>
+            <div class="description text">${game.short_description}</div>
+        </div>
+    `
+}
+
 const onScroll = () => {
     if (window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight) {
         loadGames.next();
@@ -43,7 +58,7 @@ const setParam = (name, value) => {
 }
 
 const onImgError = source => {
-    source.src = event.target.src.replace("background", "thumbnail");
+    source.src = source.src.replace("background", "thumbnail");
     source.onerror = "";
     return true;
 }
@@ -54,13 +69,8 @@ function* loadGames_(games) {
 
     for (let i = 0; i < games.length; i++) {
         const LI = document.createElement('li');
-        LI.innerHTML = `
-            <${i ? `a href="${games[i].game_url}" title="${games[i].title}"` : "div"} class="game-wrapper">
-                <img class="thumbnail" src="${i ? games[i].thumbnail : games[i].thumbnail.replace("thumbnail", "background")}" onerror='onImgError(this);' />
-                <span class="game-title text">${games[i].title}</span>
-                <div class="description text">${games[i].short_description}</div>
-            <${i ? "/a" : "/div"}>
-        `;
+        LI.setAttribute('key', `game-${games[i].id}`)
+        LI.innerHTML = createGameCard(games[i], i ? false : true);
 
         append(gamesDiv, LI);
         if (!(i % 9) && i) {
@@ -165,6 +175,20 @@ const verifyEnter = event => {
         changeSearch(event.target.value);
 }
 
+const onFavoriteClick = gameId => {
+    const newFavoritesList = [];
+
+    gamesList.forEach(game => {
+        if (game.id == gameId) game.favorite = !game.favorite;
+        if (game.favorite) newFavoritesList.push(game.id);
+    });
+
+    const gameLi = gamesDiv.querySelector(`[key="game-${gameId}"]`);
+    gameLi.querySelector('.favorite-button').classList.toggle('active');
+
+    localStorage.setItem('favorite-games', JSON.stringify(newFavoritesList));
+};
+
 // Essa função serve para setar as configurações iniciais da página
 (async () => {
     setIsLoading(true);
@@ -178,3 +202,4 @@ window.changeGroupBy = changeGroupBy;
 window.changeList = changeList;
 window.onImgError = onImgError;
 window.verifyEnter = verifyEnter;
+window.onFavoriteClick = onFavoriteClick;

@@ -350,13 +350,16 @@ body {
     li {
         display: block;
         position: relative;
-        cursor: pointer;
 
         .game-wrapper {
             margin: 10px 20px;
             border-radius: 5px;
             display: block;
-            text-decoration: none;
+
+            a {
+                text-decoration: none;
+                cursor: pointer;
+            }
 
             img {
                 width: 100%;
@@ -367,6 +370,16 @@ body {
             .description {
                 display: none;
                 font-size: 0.8rem;
+            }
+
+            .favorite-button {
+                background-color: red;
+                color: #fff;
+                cursor: pointer;
+
+                &.active {
+                    background-color: green;
+                }
             }
         }
     }
