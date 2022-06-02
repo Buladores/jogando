@@ -184,7 +184,13 @@ const onFavoriteClick = gameId => {
     });
 
     const gameLi = gamesDiv.querySelector(`[key="game-${gameId}"]`);
-    gameLi.querySelector('.favorite-button').classList.toggle('active');
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get('group-by') === 'favorites') {
+        gameLi.remove()
+    } else {
+        gameLi.querySelector('.favorite-button').classList.toggle('active');
+    }
 
     localStorage.setItem('favorite-games', JSON.stringify(newFavoritesList));
 };
