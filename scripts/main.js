@@ -132,10 +132,7 @@ const filterGames = (filters, needOne) => {
 const changeGroupBy = event => {
     setParam('search');
     setParam('group-by', event.target.value === 'all' ? null : event.target.value);
-    if (event.target.value === 'favorites') {
-        setParam('list', 'popular');
-        updateSelectedSidebarItem('popular');
-    }
+    if (event.target.value === 'favorites') setParam('list', 'popular');
 
     updateSelectedNavbarItem(event.target.value);
     loadGamesByParams();
