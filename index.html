@@ -1,32 +1,124 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Poppins:wght@300;400;600;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="./styles/index.css">
+
+    <link rel="stylesheet" href="./styles/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+
     <title>Jogando</title>
 </head>
 
 <body>
-    <button onclick="loadGames.next()">Load more</button>
-    <button onclick="changeParam('platform', 'browser')">Browser</button>
-    <button onclick="changeParam('platform', 'PC (Windows)')">PC</button>
-    <button onclick="changeParam('platform', '')">All</button>
+    <nav class="top-navbar">
+        <ul class="items">
+            <li><button onclick="changeGroupBy(event)" value="pc (windows)">PC (Windows)</button></li>
+            <li><button onclick="changeGroupBy(event)" value="all">All</button></li>
+            <li><button onclick="changeGroupBy(event)" value="browser">Browser</button></li>
+            <li><button onclick="changeGroupBy(event)" value="favorites">Favorites</button></li>
+        </ul>
+    </nav>
 
-    <div id="buttons">
-    </div>
+    <nav class="sidebar close">
+        <header id="header__nav_bar">
+            <div class="image-text">
+                <span class="image">
+                    <img src="./images/logo.png" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="title">Jogando</span>
+                    <span class="subtitle">Game Catalog</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input id="search" type="text" placeholder="Search..." onkeydown="verifyEnter(event)">
+                </li>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <button onclick="changeList(event)" value="popular">
+                            <i class='bx bx-arrow-from-bottom icon'></i>
+                            <span class="text nav-text">Most Popular</span>
+                        </button>
+                    </li>
+
+                    <li class="nav-link">
+                        <button onclick="changeList(event)" value="mmorpg">
+                            <i class='bx bx-bar-chart-alt-2 icon'></i>
+                            <span class="text nav-text">MMORPG</span>
+                        </button>
+                    </li>
+
+                    <li class="nav-link">
+                        <button onclick="changeList(event)" value="shooter">
+                            <i class='bx bx-cross icon'></i>
+                            <span class="text nav-text">Shooter</span>
+                        </button>
+                    </li>
+
+                    <li class="nav-link">
+                        <button onclick="changeList(event)" value="fighting">
+                            <i class='bx bx-knife icon'></i>
+                            <span class="text nav-text">Fighting</span>
+                        </button>
+                    </li>
+
+                    <li class="nav-link">
+                        <button onclick="changeList(event)" value="moba">
+                            <i class='bx bx-directions icon'></i>
+                            <span class="text nav-text">Moba</span>
+                        </button>
+                    </li>
+
+                    <li class="nav-link">
+                        <button onclick="changeList(event)" value="card">
+                            <i class='bx bx-credit-card-front icon'></i>
+                            <span class="text nav-text">Card</span>
+                        </button>
+                    </li>
+
+                    <li class="nav-link">
+                        <button onclick="changeList(event)" value="strategy">
+                            <i class='bx bx-card icon'></i>
+                            <span class="text nav-text">Strategy</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <button class="toggle-switch">
+                        <span class="switch"></span>
+                    </button>
+                </li>
+            </div>
+        </div>
+    </nav>
 
     <ul id="games">
     </ul>
-</body>
 
-<script src="./scripts/main.js" type="module"></script>
+    <script src="./scripts/sidebar.js"></script>
+    <script src="./scripts/main.js" type="module"></script>
+</body>
 
 </html>

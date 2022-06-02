@@ -1,0 +1,356 @@
+@charset "UTF-8";
+/* Importar a fonte - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== Definindo variáveis ===== */
+:root {
+  /* ===== Cores ===== */
+  --body-color: #e4e9f7;
+  --sidebar-color: #fff;
+  --primary-color: #695cfe;
+  --primary-color-light: #f6f5ff;
+  --toggle-color: #ddd;
+  --text-color: #2b2b2b;
+  /* ====== Transição ====== */
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
+/* ===== Definindo styles de dark e light mode ===== */
+body {
+  min-height: 100vh;
+  background-color: var(--body-color);
+  transition: var(--tran-05);
+  margin-left: 113px;
+}
+body .text {
+  color: var(--text-color);
+}
+body.dark {
+  --body-color: #18191a;
+  --sidebar-color: #242526;
+  --primary-color: #3a3b3c;
+  --primary-color-light: #3a3b3c;
+  --toggle-color: #fff;
+  --text-color: #ccc;
+}
+body.dark .sidebar header .toggle {
+  color: var(--text-color);
+}
+body.dark .sidebar li button:hover .icon,
+body.dark .sidebar li button:hover .text {
+  color: var(--text-color);
+}
+body.dark .sidebar .mode .sun-moon i.sun {
+  opacity: 1;
+}
+body.dark .sidebar .mode .sun-moon i.moon {
+  opacity: 0;
+}
+body.dark .sidebar .bottom-content .toggle-switch .switch::before {
+  left: 20px;
+}
+
+::selection {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/* ===== Top navbar ===== */
+.top-navbar {
+  padding: 20px;
+}
+.top-navbar .items {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5vw;
+  list-style: none;
+}
+.top-navbar .items li button {
+  background-color: transparent;
+  border: 0;
+  color: var(--text-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.top-navbar .items li button.active {
+  border: 1px solid red;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  padding: 10px 14px;
+  background: var(--sidebar-color);
+  transition: var(--tran-05);
+  z-index: 100;
+}
+.sidebar.close {
+  width: 88px;
+}
+.sidebar.close .text {
+  opacity: 0;
+}
+.sidebar.close .toggle {
+  transform: translateY(-50%) rotate(0deg);
+}
+.sidebar li {
+  height: 50px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.sidebar li.search-box {
+  border-radius: 6px;
+  background-color: var(--primary-color-light);
+  cursor: pointer;
+  transition: var(--tran-05);
+}
+.sidebar li.search-box input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: var(--primary-color-light);
+  color: var(--text-color);
+  border-radius: 6px;
+  font-size: 17px;
+  font-weight: 500;
+  transition: var(--tran-05);
+}
+.sidebar .menu-links li button {
+  list-style: none;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: var(--tran-03);
+  border: 0;
+  cursor: pointer;
+}
+.sidebar .menu-links li button.active {
+  border: 1px solid red;
+}
+.sidebar .menu-links li button:hover {
+  background-color: var(--primary-color);
+}
+.sidebar .menu-links li button:hover .icon,
+.sidebar .menu-links li button:hover .text {
+  color: var(--sidebar-color);
+  pointer-events: none;
+}
+.sidebar .icon {
+  min-width: 60px;
+  border-radius: 6px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.sidebar .text,
+.sidebar .icon {
+  color: var(--text-color);
+  transition: var(--tran-03);
+}
+.sidebar .text {
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 1;
+}
+.sidebar header {
+  position: relative;
+}
+.sidebar header .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar header .image img {
+  width: 40px;
+  border-radius: 6px;
+}
+.sidebar header .image,
+.sidebar header .icon {
+  min-width: 60px;
+  border-radius: 6px;
+}
+.sidebar header .image-text {
+  display: flex;
+  align-items: center;
+}
+.sidebar header .image-text .title {
+  margin-top: 2px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.sidebar header .image-text .subtitle {
+  font-size: 16px;
+  margin-top: -2px;
+  display: block;
+}
+.sidebar header .logo-text {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar header .toggle {
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  transform: translateY(-50%) rotate(180deg);
+  height: 25px;
+  width: 25px;
+  background-color: var(--primary-color);
+  color: var(--sidebar-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  transition: var(--tran-05);
+}
+.sidebar .menu {
+  margin-top: 12%;
+}
+.sidebar .menu-bar {
+  height: calc(100% - 55px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden auto;
+}
+.sidebar .menu-bar::-webkit-scrollbar {
+  display: none;
+}
+.sidebar .menu-bar .mode {
+  border-radius: 6px;
+  background-color: var(--primary-color-light);
+  position: relative;
+  transition: var(--tran-05);
+}
+.sidebar .menu-bar .mode .sun-moon {
+  height: 50px;
+  width: 60px;
+}
+.sidebar .menu-bar .mode .sun-moon i {
+  position: absolute;
+}
+.sidebar .menu-bar .mode .sun-moon i.sun {
+  opacity: 0;
+}
+.sidebar .menu-bar .bottom-content .toggle-switch {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  right: 0;
+  height: 100%;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.sidebar .menu-bar .bottom-content .toggle-switch .switch {
+  position: relative;
+  height: 22px;
+  width: 40px;
+  border-radius: 25px;
+  background-color: var(--toggle-color);
+  transition: var(--tran-05);
+}
+.sidebar .menu-bar .bottom-content .toggle-switch .switch::before {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  background-color: var(--sidebar-color);
+  transition: var(--tran-04);
+}
+
+/* ===== Game list ===== */
+#games {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  list-style: none;
+}
+#games li {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+#games li .game-wrapper {
+  margin: 10px 20px;
+  border-radius: 5px;
+  display: block;
+  text-decoration: none;
+}
+#games li .game-wrapper img {
+  width: 100%;
+  min-width: 202px;
+  background-color: darkgray;
+}
+#games li .game-wrapper .description {
+  display: none;
+  font-size: 0.8rem;
+}
+#games li:first-child {
+  grid-column: 1/-1;
+  height: 50vh;
+}
+#games li:first-child .game-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  height: calc(100% - 1rem);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center;
+}
+#games li:first-child .game-wrapper .description,
+#games li:first-child .game-wrapper .game-title {
+  display: block;
+  text-align: right;
+}
+#games li:first-child .game-wrapper img {
+  position: absolute;
+  inset: 0;
+  top: 50%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+#games li:first-child .game-wrapper .game-title {
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+#games li:first-child .game-wrapper .description {
+  font-size: 0.9rem;
+}
