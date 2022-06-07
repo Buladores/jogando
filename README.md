@@ -15,3 +15,6 @@ Salvar filtros nos parâmetros;
 Favoritos (salvos no localstore);
 
 Responsividade;
+
+## Demonstração
+Link disponível para acesso no Github Pages: https://buladores.github.io/jogando
