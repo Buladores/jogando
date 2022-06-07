@@ -13,10 +13,10 @@ const gamesDiv = document.getElementById('games'),
 const createGameCard = (game, isBanner) => {
     return `
         <div class="game-wrapper">
-            <a href="${game.game_url}" title="${game.title}">
+            <a href="${game.game_url}" title="${game.title}" target="_blank">
                 <img class="thumbnail" src="${isBanner ? game.thumbnail.replace("thumbnail", "background") : game.thumbnail}" onerror='onImgError(this);' />
             </a>
-            <a href="${game.game_url}" title="${game.title}">
+            <a href="${game.game_url}" title="${game.title}"  target="_blank">
                 <span class="game-title text">${game.title}</span>
             </a>
             <button class="favorite-button ${game.favorite ? 'active' : ''}" onclick="onFavoriteClick(${game.id})" title="Adicionar/remover dos favoritos"><span class="bx bx-heart"></span></button>
