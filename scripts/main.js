@@ -19,7 +19,7 @@ const createGameCard = (game, isBanner) => {
             <a href="${game.game_url}" title="${game.title}">
                 <span class="game-title text">${game.title}</span>
             </a>
-            <button class="favorite-button ${game.favorite ? 'active' : ''}" onclick="onFavoriteClick(${game.id})"><span class="bx bx-heart"></span></button>
+            <button class="favorite-button ${game.favorite ? 'active' : ''}" onclick="onFavoriteClick(${game.id})" title="Adicionar/remover dos favoritos"><span class="bx bx-heart"></span></button>
             <div class="description text">${game.short_description}</div>
         </div>
     `

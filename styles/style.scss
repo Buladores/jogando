@@ -1,5 +1,6 @@
 /* Importar a fonte - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +13,7 @@
     /* ===== Cores ===== */
     --body-color: #e4e9f7;
     --sidebar-color: #fff;
-    --primary-color: #695cfe;
+    --primary-color: #1a1835;
     --primary-color-light: #f6f5ff;
     --toggle-color: #ddd;
     --text-color: #2b2b2b;
@@ -49,6 +50,7 @@ body {
             }
 
             li button:hover {
+
                 .icon,
                 .text {
                     color: var(--text-color);
@@ -90,12 +92,17 @@ body {
         li button {
             background-color: transparent;
             border: 0;
-            color: var(--text-color);
             font-weight: bold;
             cursor: pointer;
+            transition: all .2s;
+            color: var(--text-color);
+            opacity: .7;
+            font-size: .6rem;
 
             &.active {
-                border: 1px solid red;
+                font-size: 1.2rem;
+                opacity: 1;
+
             }
         }
     }
@@ -167,9 +174,7 @@ body {
         border: 0;
         cursor: pointer;
 
-        &.active {
-            border: 1px solid red;
-        }
+
 
         &:hover {
             background-color: var(--primary-color);
@@ -290,6 +295,7 @@ body {
             .sun-moon {
                 height: 50px;
                 width: 60px;
+
                 i {
                     position: absolute;
 
@@ -356,6 +362,12 @@ body {
             border-radius: 5px;
             display: block;
 
+            &:hover {
+                img {
+                    transform: translateY(-5px);
+                }
+            }
+
             a {
                 text-decoration: none;
                 cursor: pointer;
@@ -365,7 +377,10 @@ body {
                 width: 100%;
                 min-width: 202px;
                 background-color: darkgray;
+                border-radius: 10px;
+                transition: var(--tran-03);
             }
+
 
             .description {
                 display: none;
@@ -373,12 +388,15 @@ body {
             }
 
             .favorite-button {
-                background-color: red;
-                color: #fff;
                 cursor: pointer;
+                background-color: transparent;
+                border: 0;
+                font-size: 1rem;
+                color: var(--text-color);
+
 
                 &.active {
-                    background-color: green;
+                    color: hsl(0, 100%, 60%) !important;
                 }
             }
         }
@@ -394,6 +412,7 @@ body {
         grid-column: 1 / -1;
         height: 50vh;
 
+
         .game-wrapper {
             position: relative;
             display: flex;
@@ -403,11 +422,15 @@ body {
             background-repeat: no-repeat;
             background-size: 100%;
             background-position: center center;
+            -webkit-box-shadow: inset 0px -100px 50px -10px #1a1a1a;
+            box-shadow: inset 0px -100px 50px -10px #1a1a1a;
 
             .description,
             .game-title {
                 display: block;
                 text-align: right;
+                margin-right: 20px;
+                color: #fff !important;
             }
 
             img {
@@ -418,6 +441,7 @@ body {
                 object-fit: cover;
                 transform: translateY(-50%);
                 z-index: -1;
+                border-radius: 10px;
             }
 
             .game-title {
@@ -427,6 +451,14 @@ body {
 
             .description {
                 font-size: 0.9rem;
+            }
+
+            .favorite-button {
+                color: #fff;
+                font-size: 2rem;
+                position: absolute;
+                left: 10px;
+                bottom: 10px;
             }
         }
     }
