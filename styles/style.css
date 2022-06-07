@@ -388,7 +388,7 @@ body.dark .sidebar .bottom-content .toggle-switch .switch::before {
     font-size: 2rem;
     position: absolute;
     left: 10px;
-    bottom: 10px;
+    bottom: 35px;
   }
 }
 @media screen and (max-width: 768px) {
